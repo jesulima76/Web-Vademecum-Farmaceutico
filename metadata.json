@@ -1,0 +1,8 @@
+{
+  "name": "Vademécum Farmacéutico Avanzado",
+  "description": "Vademécum profesional de medicamentos con buscador avanzado, fichas técnicas con formato médico y sistema de interacciones medicamentosas.",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
