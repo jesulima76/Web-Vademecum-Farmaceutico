@@ -5,6 +5,7 @@ import { MedicineDetail } from "./components/MedicineDetail";
 import { MedicineCard } from "./components/MedicineCard";
 import { CategoryList } from "./components/CategoryList";
 import { InteractionChecker } from "./components/InteractionChecker";
+import { UniversitasValentinaLogo } from "./components/UniversitasValentinaLogo";
 import { 
   Search, 
   Layers, 
@@ -139,19 +140,16 @@ export default function App() {
       {/* PROFESSIONAL CLINIC NAVBAR */}
       <header className="bg-white border-b border-slate-200 sticky top-0 z-40 print:hidden shadow-3xs">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex justify-between items-center h-16 flex-wrap gap-2 py-2">
+          <div className="flex justify-between items-center min-h-20 flex-wrap gap-4 py-3">
             
             {/* Branding logo */}
-            <div className="flex items-center gap-3">
-              <div className="p-2 bg-blue-600 text-white rounded-2xl shadow-xs">
-                <Activity className="w-6 h-6 animate-pulse" />
-              </div>
+            <div className="flex items-center">
               <div>
-                <h1 className="text-lg font-black tracking-tight text-slate-900 leading-none">
+                <h1 className="text-xl md:text-2xl font-black tracking-tight text-slate-900 leading-none">
                   VADEMÉCUM <span className="text-blue-600 font-extrabold font-mono font-bold">FARMACÉUTICO</span>
                 </h1>
-                <p className="text-[10px] text-slate-500 font-semibold tracking-wider uppercase mt-0.5">
-                  Centro de Información Farmacológica Avanzada
+                <p className="text-[10px] md:text-xs text-slate-500 font-bold tracking-wider uppercase mt-1">
+                  Universidad José Antonio Páez - Curso Técnico en Farmacia
                 </p>
               </div>
             </div>
