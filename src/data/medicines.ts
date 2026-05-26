@@ -503,6 +503,51 @@ export const medicines: Medicine[] = [
     warningsPrecautions: "Crítica: Alto potencial de abuso y dependencia física. Mantener antagonista (Naloxona) disponible.",
     category: "Analgésicos y Opioides",
     isCritical: true
+  },
+  {
+    id: 31,
+    fullName: "Amlodipino (Norvasc)",
+    genericName: "Amlodipino",
+    brandNames: ["Norvasc", "Amloc"],
+    composition: "Amlodipino besilato (5 mg o 10 mg).",
+    indications: "Hipertensión arterial sistémica, angina de pecho estable crónica o vasoespástica (Prinzmetal).",
+    contraindications: "Hipotensión grave, shock (incluyendo shock cardiogénico), insuficiencia cardíaca tras un infarto agudo de miocardio.",
+    dosage: "VO: Inicialmente 5 mg una vez al día, ajustable según respuesta clínica hasta un máximo de 10 mg una vez al día.",
+    presentation: "Comprimidos.",
+    adverseReactions: "Edema de tobillos (periférico), cefalea, rubor facial (bochornos), palpitaciones, mareos.",
+    warningsPrecautions: "Precaución en insuficiencia cardíaca descompensada y hepatopatías. Monitorear edemas y presión arterial.",
+    category: "Cardiovascular e Inotrópicos",
+    isCritical: false
+  },
+  {
+    id: 32,
+    fullName: "Bisoprolol (Concor)",
+    genericName: "Bisoprolol",
+    brandNames: ["Concor", "Beloc"],
+    composition: "Bisoprolol fumarato (1.25 mg, 2.5 mg, 5 mg o 10 mg).",
+    indications: "Cardiopatía isquémica, hipertensión arterial, insuficiencia cardíaca crónica estable con disfunción ventricular izquierda sistólica.",
+    contraindications: "Insuficiencia cardíaca aguda o episodios de descompensación (requiriendo inotrópicos), shock cardiogénico, bloqueo AV de 2º o 3º grado (sin marcapasos), bradicardia (<60 lpm), asma bronquial grave.",
+    dosage: "VO: Inicialmente 1.25 mg una vez al día. Incrementar semanal o quincenalmente de forma gradual hasta un máximo de 10 mg una vez al día.",
+    presentation: "Comprimidos.",
+    adverseReactions: "Bradicardia sintomática, frialdad en extremidades, mareo, fatiga intensa, hipotensión excesiva.",
+    warningsPrecautions: "Crítica: Nunca suspender de manera brusca el tratamiento por riesgo de inducción de taquiarritmias, crisis anginosas o infarto de miocardio.",
+    category: "Cardiovascular e Inotrópicos",
+    isCritical: true
+  },
+  {
+    id: 33,
+    fullName: "Amiodarona (Atlansil, Cordarone)",
+    genericName: "Amiodarona",
+    brandNames: ["Atlansil", "Cordarone"],
+    composition: "Clorhidrato de amiodarona (150 mg/3ml inyectable o 200 mg comprimido).",
+    indications: "Tratamiento y prevención de arritmias ventriculares o supraventriculares recurrentes y graves (fibrilación o flutter auricular).",
+    contraindications: "Bradicardia sinusal extrema, bloqueo SA o AV de 2º o 3º grado (sin marcapasos funcionante), disfunción tiroidea activa, lactancia.",
+    dosage: "IV (Emergencia): Bolo inicial de 150-300 mg infundido en glucosa al 5%; mantenimiento por infusión continua. VO: 200-600 mg al día.",
+    presentation: "Ampollas inyectables, comprimidos.",
+    adverseReactions: "Toxicidad pulmonar (fibrosis alveolar), disfunción tiroidea (hipo o hipertiroidismo), microdepósitos corneales, fotosensibilidad cutánea, coloración azul-grisácea de la piel.",
+    warningsPrecautions: "Crítica: Realizar controles periódicos de ECG, radiografía de tórax y pruebas de función tiroidea y hepática. Prolonga de forma dosis-dependiente el intervalo QT.",
+    category: "Cardiovascular e Inotrópicos",
+    isCritical: true
   }
 ];
 
@@ -591,5 +636,27 @@ export const predefinedInteractions: DrugInteraction[] = [
     severity: "Moderada",
     mechanism: "Bloqueo neuromuscular facilitado y prolongado bajo inducción profunda de propofol.",
     recommendation: "Asegurar soporte de ventilación mecánica de alta prioridad. Reversión posterior segura si fuese necesario."
+  },
+  // Nuevas interacciones de medicamentos cardiovasculares agregados
+  {
+    drug1Id: 32, // Bisoprolol
+    drug2Id: 33, // Amiodarona
+    severity: "Alta",
+    mechanism: "Sinergia depresora de los nódulo sinusal y auriculoventricular. Puede ocasionar bradicardia severa, bloqueo cardíaco completo o parada sinusal.",
+    recommendation: "Evitarlos de forma libre. Si es clínicamente indispensable el uso conjunto, ajustar dosis a la baja, monitorizar con ECG y vigilar los pulsos."
+  },
+  {
+    drug1Id: 31, // Amlodipino
+    drug2Id: 32, // Bisoprolol
+    severity: "Moderada",
+    mechanism: "Efecto aditivo hipotensor y depresor cardíaco. Riesgo de hipotensión severa, bradicardia o síncope.",
+    recommendation: "Monitorizar la presión arterial y el pulso basal durante el inicio y ajuste de dosis de ambos fármacos."
+  },
+  {
+    drug1Id: 31, // Amlodipino
+    drug2Id: 33, // Amiodarona
+    severity: "Moderada",
+    mechanism: "La amiodarona inhibe el aclaramiento hepático vía CYP3A4, pudiendo elevar las concentraciones séricas de amlodipino con riesgo de hipotensión grave y edema periférico.",
+    recommendation: "Vigilar edemas marcados y respuesta de la tensión arterial. Considerar reducir dosis de amlodipino."
   }
 ];

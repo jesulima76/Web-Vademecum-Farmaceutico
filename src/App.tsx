@@ -5,7 +5,7 @@ import { MedicineDetail } from "./components/MedicineDetail";
 import { MedicineCard } from "./components/MedicineCard";
 import { CategoryList } from "./components/CategoryList";
 import { InteractionChecker } from "./components/InteractionChecker";
-import { UniversitasValentinaLogo } from "./components/UniversitasValentinaLogo";
+import { WelcomePortal } from "./components/WelcomePortal";
 import { 
   Search, 
   Layers, 
@@ -24,7 +24,7 @@ import {
 
 export default function App() {
   // State managers
-  const [activeTab, setActiveTab] = useState<"list" | "checker">("list");
+  const [activeTab, setActiveTab] = useState<"welcome" | "list" | "checker">("welcome");
   const [selectedMedicine, setSelectedMedicine] = useState<Medicine | null>(null);
   
   // Basic Search Filter States
@@ -138,17 +138,17 @@ export default function App() {
     <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
       
       {/* PROFESSIONAL CLINIC NAVBAR */}
-      <header className="bg-white border-b border-slate-200 sticky top-0 z-40 print:hidden shadow-3xs">
+      <header className="bg-[#0F172A] border-b border-slate-800 sticky top-0 z-40 print:hidden shadow-md">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center min-h-20 flex-wrap gap-4 py-3">
             
             {/* Branding logo */}
             <div className="flex items-center">
               <div>
-                <h1 className="text-xl md:text-2xl font-black tracking-tight text-slate-900 leading-none">
-                  VADEMÉCUM <span className="text-blue-600 font-extrabold font-mono font-bold">FARMACÉUTICO</span>
+                <h1 className="text-xl md:text-2xl font-black tracking-tight text-white leading-none">
+                  VADEMÉCUM <span className="text-blue-400 font-extrabold font-mono font-bold">FARMACÉUTICO</span>
                 </h1>
-                <p className="text-[10px] md:text-xs text-slate-500 font-bold tracking-wider uppercase mt-1">
+                <p className="text-[10px] md:text-xs text-slate-300 font-bold tracking-wider uppercase mt-1">
                   Universidad José Antonio Páez - Curso Técnico en Farmacia
                 </p>
               </div>
@@ -156,14 +156,14 @@ export default function App() {
 
             {/* Quick Indexed Status counter banner */}
             <div className="hidden lg:flex items-center gap-4 text-xs">
-              <div className="bg-slate-100 px-3 py-1.5 rounded-lg border border-slate-200 flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-emerald-500 animate-ping" />
-                <span className="font-semibold text-slate-600">CSV Indexado:</span>
-                <span className="font-bold text-slate-900">{medicines.length} Fórmulas</span>
+              <div className="bg-slate-800/80 px-3 py-1.5 rounded-lg border border-slate-700 flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-emerald-400 animate-ping" />
+                <span className="font-semibold text-slate-300">CSV Indexado:</span>
+                <span className="font-bold text-white">{medicines.length} Fórmulas</span>
               </div>
-              <div className="bg-blue-50/50 px-3 py-1.5 rounded-lg border border-blue-100 flex items-center gap-2">
-                <Sparkles className="w-3.5 h-3.5 text-blue-500" />
-                <span className="font-bold text-blue-800">Motor IA Listo</span>
+              <div className="bg-blue-950/40 px-3 py-1.5 rounded-lg border border-blue-900/60 flex items-center gap-2">
+                <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+                <span className="font-bold text-blue-300">Motor IA Listo</span>
               </div>
             </div>
 
@@ -210,6 +210,20 @@ export default function App() {
           <div className="flex gap-2">
             <button
               onClick={() => {
+                setActiveTab("welcome");
+                setSelectedMedicine(null);
+              }}
+              className={`pb-3 px-4 text-sm font-bold tracking-tight border-b-2 transition-all cursor-pointer flex items-center gap-2 ${
+                activeTab === "welcome"
+                  ? "border-blue-600 text-blue-700 font-extrabold"
+                  : "border-transparent text-slate-500 hover:text-slate-800"
+              }`}
+            >
+              <Layers className="w-4 h-4" />
+              <span>Inicio Portal</span>
+            </button>
+            <button
+              onClick={() => {
                 setActiveTab("list");
                 // Keep selected medicine but go to directory
               }}
@@ -247,6 +261,29 @@ export default function App() {
             Consorcio Clínico Vademécum v4.2
           </div>
         </div>
+
+        {/* ==================== TAB 0: WELCOME PORTAL ==================== */}
+        {activeTab === "welcome" && (
+          <WelcomePortal
+            totalMedicines={medicines.length}
+            onEnterDirectory={(initialSearch) => {
+              if (initialSearch !== undefined) {
+                setSearchQuery(initialSearch);
+              }
+              setActiveTab("list");
+              setSelectedMedicine(null);
+            }}
+            onEnterChecker={() => {
+              setActiveTab("checker");
+              setSelectedMedicine(null);
+            }}
+            onSelectCategory={(category) => {
+              setSelectedCategory(category);
+              setActiveTab("list");
+              setSelectedMedicine(null);
+            }}
+          />
+        )}
 
         {/* ==================== TAB 1: DIRECTORY VIEW ==================== */}
         {activeTab === "list" && (

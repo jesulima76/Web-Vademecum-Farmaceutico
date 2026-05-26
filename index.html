@@ -4,6 +4,26 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vademécum Farmacéutico Avanzado</title>
+    <script>
+      // Escudo de compatibilidad para evitar que extensiones o entornos de sandbox
+      // fallen al intentar interceptar o sobreescribir la propiedad de lectura de window.fetch.
+      try {
+        const originalFetch = window.fetch;
+        if (originalFetch) {
+          let activeFetch = originalFetch;
+          Object.defineProperty(window, "fetch", {
+            get: () => activeFetch,
+            set: (value) => {
+              activeFetch = value;
+            },
+            configurable: true,
+            enumerable: true,
+          });
+        }
+      } catch (e) {
+        console.warn("No se pudo iniciar el interceptor de compatibilidad de fetch:", e);
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
