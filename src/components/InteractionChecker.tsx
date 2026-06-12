@@ -380,22 +380,36 @@ export const InteractionChecker: React.FC<InteractionCheckerProps> = ({
 
           {/* GEMINI AI CLINICAL ADVISOR REPORT DISPLAY */}
           {aiReport && (
-            <div className="p-5 bg-blue-50/40 border border-blue-100 rounded-2xl space-y-4 animate-in fade-in duration-500">
-              <div className="flex items-center justify-between border-b border-blue-100 pb-2.5 flex-wrap gap-2">
+            <div className={`p-5 rounded-2xl space-y-4 animate-in fade-in duration-500 ${
+              aiReport.isContingency 
+                ? "bg-slate-50 border border-slate-200" 
+                : "bg-blue-550/[0.03] border border-blue-100"
+            }`}>
+              <div className={`flex items-center justify-between border-b pb-2.5 flex-wrap gap-2 ${
+                aiReport.isContingency ? "border-slate-200" : "border-blue-100"
+              }`}>
                 <div className="flex items-center gap-2">
-                  <Brain className="text-blue-600 w-5 h-5 shrink-0" />
-                  <span className="font-bold text-sm text-blue-900 uppercase tracking-wider">
-                    Análisis Farmacológico Avanzado por Gemini 3.5
+                  <Brain className={`${aiReport.isContingency ? "text-slate-500" : "text-blue-600"} w-5 h-5 shrink-0`} />
+                  <span className={`font-bold text-sm uppercase tracking-wider ${
+                    aiReport.isContingency ? "text-slate-850" : "text-blue-900"
+                  }`}>
+                    {aiReport.isContingency ? "Soporte de Seguridad (Plan de Contingencia)" : "Análisis Farmacológico Avanzado por Gemini 3.5"}
                   </span>
                 </div>
-                <div className="flex items-center gap-1 bg-white border border-blue-200 text-blue-700 text-[10px] font-bold px-2 py-0.5 rounded-full select-none">
-                  <Sparkles className="w-3 h-3 text-blue-500" />
-                  <span>Cruce Clínico IA</span>
+                <div className={`flex items-center gap-1 border text-[10px] font-bold px-2 py-0.5 rounded-full select-none ${
+                  aiReport.isContingency 
+                    ? "bg-white border-slate-300 text-slate-600" 
+                    : "bg-white border-blue-200 text-blue-700"
+                }`}>
+                  <Sparkles className={`w-3 h-3 ${aiReport.isContingency ? "text-slate-400" : "text-blue-500"}`} />
+                  <span>{aiReport.isContingency ? "Base Local" : "Cruce Clínico IA"}</span>
                 </div>
               </div>
 
               {/* Summary line */}
-              <p className="text-slate-800 text-sm font-medium leading-relaxed italic bg-white/70 p-3.5 rounded-lg border border-blue-100">
+              <p className={`text-slate-800 text-sm font-medium leading-relaxed italic bg-white/70 p-3.5 rounded-lg border ${
+                aiReport.isContingency ? "border-slate-200" : "border-blue-100"
+              }`}>
                 "{aiReport.summary}"
               </p>
 
@@ -413,19 +427,30 @@ export const InteractionChecker: React.FC<InteractionCheckerProps> = ({
                 }`}>
                   Riesgo de Interacción {aiReport.severity || "Ninguno"}
                 </span>
+                {aiReport.isContingency && (
+                  <span className="text-[10px] bg-amber-50 text-amber-700 border border-amber-200 font-bold px-2 py-0.5 rounded font-mono">
+                    CONTINGENCIA ACTIVA
+                  </span>
+                )}
               </div>
 
               {/* Generated combinations details */}
               {aiReport.details && aiReport.details.length > 0 && (
                 <div className="space-y-3.5 pt-1">
-                  <span className="text-[10px] font-bold text-blue-800/80 uppercase tracking-wider block">
+                  <span className={`text-[10px] font-bold uppercase tracking-wider block ${
+                    aiReport.isContingency ? "text-slate-600" : "text-blue-800/80"
+                  }`}>
                     Mecanismos Específicos Evaluados por la IA:
                   </span>
                   <div className="grid grid-cols-1 gap-3">
                     {aiReport.details.map((det: any, idx: number) => (
-                      <div key={idx} className="bg-white border border-blue-100/70 p-3.5 rounded-xl shadow-3xs space-y-2">
+                      <div key={idx} className={`bg-white border p-3.5 rounded-xl shadow-3xs space-y-2 ${
+                        aiReport.isContingency ? "border-slate-200" : "border-blue-100/70"
+                      }`}>
                         <div className="flex items-center justify-between flex-wrap gap-1 border-b border-slate-100 pb-1.5">
-                          <span className="text-xs font-bold text-blue-950 font-mono bg-blue-50/50 py-0.5 px-2 rounded">
+                          <span className={`text-xs font-bold font-mono py-0.5 px-2 rounded ${
+                            aiReport.isContingency ? "bg-slate-100 text-slate-800" : "bg-blue-50/50 text-blue-950"
+                          }`}>
                             {det.combination}
                           </span>
                           <span className={`text-[9px] font-extrabold px-2 py-0.5 rounded uppercase ${
@@ -456,9 +481,13 @@ export const InteractionChecker: React.FC<InteractionCheckerProps> = ({
 
               {/* Nursing and Clinical advice box */}
               {aiReport.generalClinicalAdvice && (
-                <div className="p-3.5 bg-white border border-blue-100/60 rounded-xl space-y-1.5 shadow-3xs">
-                  <div className="flex items-center gap-1.5 text-xs font-bold text-blue-900 uppercase">
-                    <AlertCircle className="w-3.5 h-3.5 text-blue-600" />
+                <div className={`p-3.5 bg-white border rounded-xl space-y-1.5 shadow-3xs ${
+                  aiReport.isContingency ? "border-slate-200" : "border-blue-100/60"
+                }`}>
+                  <div className={`flex items-center gap-1.5 text-xs font-bold uppercase ${
+                    aiReport.isContingency ? "text-slate-700" : "text-blue-900"
+                  }`}>
+                    <AlertCircle className={`w-3.5 h-3.5 ${aiReport.isContingency ? "text-slate-550" : "text-blue-600"}`} />
                     <span>Indicaciones Generales de Enfermería y Administración:</span>
                   </div>
                   <p className="text-xs text-slate-600 leading-normal">

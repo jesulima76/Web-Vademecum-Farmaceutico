@@ -596,7 +596,7 @@ export default function App() {
             <div className="space-y-2">
               <span className="font-mono text-white text-xs tracking-widest font-black uppercase block">CONCEPTO ACADÉMICO</span>
               <p className="text-xs text-slate-400 leading-relaxed">
-                Este Vademécum representa un recopilatorio digitalizado de 30 fármacos críticos basados en el inventario provisto en el archivo medicinal anexo (medicamentos.csv). Es una herramienta consultiva e interactiva.
+                Este Vademécum representa un recopilatorio digitalizado de 228 fármacos esenciales. Es una herramienta consultiva e interactiva.
               </p>
             </div>
 
