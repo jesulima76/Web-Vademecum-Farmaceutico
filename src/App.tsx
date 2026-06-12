@@ -137,8 +137,34 @@ export default function App() {
   return (
     <div className="min-h-screen bg-slate-50 text-slate-800 flex flex-col font-sans selection:bg-blue-100 selection:text-blue-900">
       
-      {/* PROFESSIONAL CLINIC NAVBAR */}
+      {/* PROFESSIONAL CLINIC NAVBAR WITH INSTITUTIONAL TOP RIBBON */}
       <header className="bg-[#0F172A] border-b border-slate-800 sticky top-0 z-40 print:hidden shadow-md">
+        
+        {/* ribbon superior (cinta superior de la Universidad) */}
+        <div className="bg-[#090D1A] border-b border-slate-800/40 py-2.5">
+          <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between gap-4 flex-wrap text-xs">
+            <div className="flex items-center gap-3">
+              <div className="shrink-0 bg-white p-1 rounded-lg w-10 h-10 flex items-center justify-center overflow-hidden border border-slate-700/60 shadow-sm animate-in fade-in zoom-in duration-500">
+                <img 
+                  src="https://upload.wikimedia.org/wikipedia/commons/thumb/6/62/Logo-UJAP2.jpg/330px-Logo-UJAP2.jpg" 
+                  alt="Logo UJAP" 
+                  className="w-full h-full object-contain"
+                  referrerPolicy="no-referrer"
+                />
+              </div>
+              <div>
+                <span className="text-[9px] md:text-[10px] font-mono font-black text-blue-400 tracking-wider block uppercase leading-none">UNIVERSIDAD JOSÉ ANTONIO PÁEZ</span>
+                <p className="font-extrabold text-xs text-slate-100 uppercase tracking-wide leading-none mt-1">Curso Técnico en Farmacia</p>
+              </div>
+            </div>
+            
+            <div className="flex items-center gap-2 px-2.5 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-300 text-[10px] font-extrabold uppercase tracking-widest shrink-0">
+              <Sparkles className="w-3.5 h-3.5 text-blue-400" />
+              <span>Plataforma Oficial de Consulta Académica</span>
+            </div>
+          </div>
+        </div>
+
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex justify-between items-center min-h-20 flex-wrap gap-4 py-3">
             
@@ -148,8 +174,8 @@ export default function App() {
                 <h1 className="text-xl md:text-2xl font-black tracking-tight text-white leading-none">
                   VADEMÉCUM <span className="text-blue-400 font-extrabold font-mono font-bold">FARMACÉUTICO</span>
                 </h1>
-                <p className="text-[10px] md:text-xs text-slate-300 font-bold tracking-wider uppercase mt-1">
-                  Universidad José Antonio Páez - Curso Técnico en Farmacia
+                <p className="text-[10px] md:text-xs text-slate-400 font-medium tracking-wider uppercase mt-1">
+                  Portal de Consulta e Interacciones Clínicas
                 </p>
               </div>
             </div>

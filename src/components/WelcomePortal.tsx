@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 // @ts-ignore
-import pharmaMedsImg from "../assets/images/pharmaceutical_meds_1779797653432.png";
+import pharmacistHeroImg from "../assets/images/pharmacist_hero_1779833969692.png";
 import { MedicineCategory } from "../types";
 import { 
   Search, 
@@ -77,62 +77,60 @@ export const WelcomePortal: React.FC<WelcomePortalProps> = ({
         <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-transparent pointer-events-none" />
         <div className="absolute top-0 right-0 w-80 h-80 bg-blue-500/5 rounded-full filter blur-3xl pointer-events-none" />
         
-        <div className="p-6 md:p-12 relative z-10 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="p-6 md:p-12 relative z-10">
           
-          {/* Main Hero contents */}
-          <div className="lg:col-span-8 space-y-5">
-            <div className="inline-flex items-center gap-2 px-3 py-1 bg-blue-500/10 border border-blue-500/20 rounded-full text-blue-300 text-[10px] h-6 font-extrabold uppercase tracking-widest">
-              <Sparkles className="w-3.5 h-3.5" />
-              <span>Plataforma Oficial de Consulta Académica</span>
-            </div>
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
             
-            <div className="space-y-2">
-              <h1 className="text-3xl md:text-5xl font-black tracking-tight leading-none text-white uppercase">
-                Vademécum <span className="text-blue-400 font-mono font-extrabold">Farmacéutico</span> <br />
-                <span className="text-slate-350">Avanzado</span>
-              </h1>
-              <p className="text-sm md:text-base text-slate-300 font-medium max-w-2xl leading-relaxed">
-                Guía digitalizada y optimizada de principios activos críticos, diseñada para el estudio clínico y el chequeo automatizado de interacciones farmacológicas de alta fidelidad.
-              </p>
-            </div>
-
-            {/* Quick search input in Hero */}
-            <form onSubmit={handleSearchSubmit} className="max-w-xl">
-              <div className="relative flex items-center bg-slate-900/90 border border-slate-700 rounded-xl p-1.5 focus-within:border-blue-400 transition-colors">
-                <Search className="text-slate-400 w-4 h-4 ml-3 shrink-0" />
-                <input
-                  type="text"
-                  placeholder="Buscar medicamentos por nombre genérico o marca comercial..."
-                  value={quickSearch}
-                  onChange={(e) => setQuickSearch(e.target.value)}
-                  className="w-full text-xs md:text-sm bg-transparent border-none outline-none text-white placeholder-slate-400 px-2 py-1"
-                />
-                <button
-                  type="submit"
-                  className="bg-blue-600 hover:bg-blue-700 font-bold ml-1.5 px-4 py-2 rounded-lg text-xs tracking-wide transition-all uppercase cursor-pointer text-white shrink-0"
-                >
-                  Buscar
-                </button>
+            {/* Main Hero contents */}
+            <div className="lg:col-span-8 space-y-5">
+              
+              <div className="space-y-2">
+                <h1 className="text-3xl md:text-5xl font-black tracking-tight leading-none text-white uppercase">
+                  Vademécum <span className="text-blue-400 font-mono font-extrabold">Farmacéutico</span>
+                </h1>
+                <p className="text-sm md:text-base text-slate-300 font-medium max-w-2xl leading-relaxed">
+                  Guía digitalizada y optimizada de principios activos críticos, diseñada para el estudio clínico y el chequeo automatizado de interacciones farmacológicas de alta fidelidad.
+                </p>
               </div>
-            </form>
-          </div>
 
-          {/* Pharmaceutical Image Banner */}
-          <div className="lg:col-span-4 flex flex-col items-center justify-center overflow-hidden bg-slate-900/40 border border-slate-800 rounded-2xl text-center h-48 md:h-64 relative group shadow-inner">
-            <img 
-              src={pharmaMedsImg} 
-              alt="Medicamentos Farmacéuticos" 
-              className="absolute inset-0 w-full h-full object-cover opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-700 select-none cursor-pointer"
-              referrerPolicy="no-referrer"
-            />
-            {/* Dark gradient overlay for legibility & clinical depth */}
-            <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent pointer-events-none" />
-            <div className="absolute bottom-4 left-5 right-5 text-left z-10 pointer-events-none">
-              <span className="text-[10px] font-mono font-black text-blue-400 tracking-widest block uppercase">UJAP - VALENCIA</span>
-              <p className="font-black text-xs text-slate-100 uppercase tracking-wide leading-tight mt-0.5">ESTUDIOS TÉCNICOS EN FARMACIA</p>
+              {/* Quick search input in Hero */}
+              <form onSubmit={handleSearchSubmit} className="max-w-xl">
+                <div className="relative flex items-center bg-slate-900/90 border border-slate-700 rounded-xl p-1.5 focus-within:border-blue-400 transition-colors">
+                  <Search className="text-slate-400 w-4 h-4 ml-3 shrink-0" />
+                  <input
+                    type="text"
+                    placeholder="Buscar medicamentos por nombre genérico o marca comercial..."
+                    value={quickSearch}
+                    onChange={(e) => setQuickSearch(e.target.value)}
+                    className="w-full text-xs md:text-sm bg-transparent border-none outline-none text-white placeholder-slate-400 px-2 py-1"
+                  />
+                  <button
+                    type="submit"
+                    className="bg-blue-600 hover:bg-blue-700 font-bold ml-1.5 px-4 py-2 rounded-lg text-xs tracking-wide transition-all uppercase cursor-pointer text-white shrink-0"
+                  >
+                    Buscar
+                  </button>
+                </div>
+              </form>
             </div>
-          </div>
 
+            {/* Pharmaceutical Image Banner */}
+            <div className="lg:col-span-4 flex flex-col items-center justify-center overflow-hidden bg-slate-900/40 border border-slate-800 rounded-2xl text-center h-48 md:h-64 relative group shadow-inner">
+              <img 
+                src={pharmacistHeroImg} 
+                alt="Farmacéutica y Consulta de Principios Activos" 
+                className="absolute inset-0 w-full h-full object-cover opacity-80 hover:opacity-100 hover:scale-105 transition-all duration-700 select-none cursor-pointer"
+                referrerPolicy="no-referrer"
+              />
+              {/* Dark gradient overlay for legibility & clinical depth */}
+              <div className="absolute inset-0 bg-gradient-to-t from-slate-950/95 via-slate-950/40 to-transparent pointer-events-none" />
+              <div className="absolute bottom-4 left-5 right-5 text-left z-10 pointer-events-none">
+                <span className="text-[10px] font-mono font-black text-blue-400 tracking-widest block uppercase">UJAP - VALENCIA</span>
+                <p className="font-black text-xs text-slate-100 uppercase tracking-wide leading-tight mt-0.5">ESTUDIOS TÉCNICOS EN FARMACIA</p>
+              </div>
+            </div>
+
+          </div>
         </div>
       </div>
 

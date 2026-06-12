@@ -1,4 +1,5 @@
 import { Medicine, DrugInteraction, MedicineCategory } from "../types";
+import { getAdditionalMedicines } from "./additional_medicines";
 
 export const CATEGORIES: { category: MedicineCategory; description: string; count: number }[] = [
   {
@@ -53,7 +54,7 @@ export const CATEGORIES: { category: MedicineCategory; description: string; coun
   }
 ];
 
-export const medicines: Medicine[] = [
+const baseMedicines: Medicine[] = [
   {
     id: 1,
     fullName: "Ácido Tranexámico (Amchafibrin)",
@@ -549,6 +550,11 @@ export const medicines: Medicine[] = [
     category: "Cardiovascular e Inotrópicos",
     isCritical: true
   }
+];
+
+export const medicines: Medicine[] = [
+  ...baseMedicines,
+  ...getAdditionalMedicines()
 ];
 
 export const predefinedInteractions: DrugInteraction[] = [
